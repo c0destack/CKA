@@ -1,0 +1,4 @@
+- it only decide which pod will go to which node but placement is done by kubelet
+- scheduling is decided on the basis of (resources requirements)
+  filter node(eliminate node) -> (rank node)it uses worst fit of os (having more no of available resources)
+- 

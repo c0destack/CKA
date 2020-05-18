@@ -1,0 +1,23 @@
+[replica controller]
+- high availability
+- load balancing and scaling
+- it uses v1 api and older tech
+[replica set]
+- apps/v1
+- selector is a extra field in rs, it will take care about the older created pods also
+- replace command like apply command
+- kubectl scale --replicas=6 -f filename or kubectl scale --replicas=6 replicaset rs-name 
+- kubectl get all
+
+[pods]
+- kubectl run --generator=run-pod/v1 nginx --image=nginx
+
+[NameSpace]
+- dns name for default ns is same as service name
+- dns name for other namespace would be <svcname>.<namespace>.<service>.<domain> (svcname.ns.svc.cluster.local)
+- to change the default ns use the following command
+  kubectl config set-context $(kubectl config current-context) --namespace=ns
+
+- Resouce quota is used to set the resource limit to a namespace
+  we can mention under spec.hard section (pods: "", request.cpu="")
+  

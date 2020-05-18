@@ -1,0 +1,14 @@
+Master Node: Manage,plan,schedule and monitor nodes
+Worker Node: Host applications as container
+
+Control plane components( can be a container as well)
+- etcd: highly available db stored info in the form of key value pair
+- kube-scheduler: schedule the container on the nodes on the basis of requirements 
+                   resources,affinity rule,taints etcd
+- Control Manager:  node Controler (take care about nodes),replica Controler(take care about
+                     no. of available replicas)
+- kubeapi-server: main entry point, communicate with the external users
+
+worker nodes:
+- kubelet: installed on the each nodes, make a communication between kubeapi server and nodes
+- kube-proxy: (service) setup the communication between two worker nodes 

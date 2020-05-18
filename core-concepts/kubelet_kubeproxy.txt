@@ -1,0 +1,13 @@
+- regsiter node
+- crete pods
+- monitor node & pods
+
+- kubeadm doesn't deploy the kubelet automatically. we have to install it manually as a service
+---------------------------------------------------------------------------------
+kube-proxy
+---------------------------------------------------------------------------------
+- service is just a virtual thing remains in the memory of the kubernetes. it helps the pods
+  to develop a network so that they can communicate with each other
+- kube proxy is installed on each worker node and it contains an ip table which maps the ip of svc 
+  and the actual pods connected to svc so that traffic can be transfered directly.
+- it is deploy as a demonsets 

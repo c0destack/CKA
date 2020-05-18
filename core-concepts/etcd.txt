@@ -1,0 +1,11 @@
+etcd: it is distributed reliable key-value pair store which simple,fast & secure
+install: download binary,extract & run as service ( link ????)
+etcd-port: 2379
+ ## commandline tool
+ ./etcdctl set key1 value1, get key1
+
+- To set the right version of API set the environment variable ETCDCTL_API command
+export ETCDCTL_API=3
+
+- kubedm - etcd is deployed as a pod so we can get the deta by exec into it and run etcdctl commands
+- manual method: we configure etcd as service in the master node

@@ -1,0 +1,7 @@
+- user access the kube-api by kubectl command directly and perform the actions
+- authenticate user -> validate request -> retrieve data -> update etcd (pod created)
+- it communicate with scheduler and get the result and communicate with kubectl of worker node
+   and deploy the pod with the help of container runtime engine and return result to kubeapi server
+    and it update the etcd. other components takes the help of kubeapi to update anthing (access etcd)
+- it can be located at /etc/kubernetes/manifests/kube-apiserver.yaml (kubeadm,pod)
+- kubeapi service at /etc/systemd/system/kube-apiserver.service (hard way,svc)

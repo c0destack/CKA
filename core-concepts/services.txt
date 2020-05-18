@@ -1,0 +1,12 @@
+- it develop the connectivity or comminication between different components.
+- we can't access the pod from outside the node directly because of having different network
+  so we have to ssh into node and run curl pod-ip command to access the pod
+- nodeport svc: listen request to a port in node and forward it to the pod
+   its range is 30k to 32767. (nodeport,port,targetport). mapping b/w the svc and port can be done
+   by the label and selectors
+   pod can be access directly via http://<nodeip>:<nodeport> 
+   it is independent of the node (remains available in all nodes)
+- kubectl expose pod redis --port=6379 --name redis-service (This will automatically use the pod's labels as selectors)
+  kubectl create service clusterip redis --tcp=6379:6379 (his will not use the pods labels as selectors,
+  instead it will assume selectors as app=redis)
+-

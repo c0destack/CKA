@@ -1,0 +1,7 @@
+- watch system & (remediate situation) worked towards to make system more functionable
+- node controller - take care about the node, check status after 5s(monitor period) if not recieve heart beat
+  marked unreachable after 40s(grace period) and eviction timeout is 5m(eviction period)
+- replica controller - take care about the replicas.
+- we have a separate controller for every resources
+- all controllers are packed into the kube-controller-manager
+- ps -aux command for checking the running process
