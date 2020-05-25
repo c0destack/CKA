@@ -1,0 +1,5 @@
+- we taint the node to allow only those pods who can tolrate that taint (pods are tolerated)
+- kubectl taint nodes node-name key=value:taint-effect
+- taint-effect can be NoSchedule, PreferNoSchedule or NoExecute (if already scheduled, then evicted)
+- toleration is added in pod.spec.tolerations under key,operator(Equal), value and effect. all should be in doule quotes
+- master node is bydefault tainted by NoSchedule

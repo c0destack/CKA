@@ -1,0 +1,23 @@
+- resources are container specific
+- default value of request cpu & m/m is 0.5cpu & 256Mi memory and min cpy=1m (can be set by
+  creation of limitrange resource in same namespace)
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-limit-range
+spec:
+  limits:
+  - default:
+      cpu: 1
+    defaultRequest:
+      cpu: 0.5
+    type: Container
+- 1K(kilobyte) 1000byte and 1Ki(Kibibyte) 1024 bytes
+- default value of limit cpu & m/m is 1cpu & 512Mi
+- a pod can't use cpu more than limit but i can use memory, but pod will be terminated if
+  try to use the more memory than limit
+- ---------------------------------------------------------
+- we can only edit the image,tolerations of the pod by edit command
+  not the env,avc-account,resources.
+  but its copy will be created in /tmp/kubectl-edit-ccvrq.yaml section
+- 

@@ -1,0 +1,8 @@
+- scheduler check the nodeName attribue in the pod manifest to check wheather to schedule or not
+  it only schedule if doesn't have nodeName field
+- the scheduler then use the scheduling also(worst fit) to schedule the node and bind the pod to node
+- the binding object can be used to schedule the pod manually using curl command and pass the
+  binding object as json file.
+  curl --request POST --date '{binding object} http://$server/api/v1/namespaces/default/pods
+  /$podname/binding
+-

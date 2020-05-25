@@ -1,0 +1,5 @@
+- labels and selectors are use to uniquely identify the resources (tag them with label)
+  & find/match by the selectors
+- kubectl get pods --selector= label
+- annotations is used to store metadata about the resource which maybe used in future for a purpose
+- multiple selectors can be provided by comma seperated

@@ -1,0 +1,15 @@
+- add the labels of the node inside pod.spec.nodeSelector so that it will schedule the pod on
+  that node only
+- to label a node: kubectl label node <node-name> key=value
+- --------------------------------------------------------------
+<affinity>
+- we can add affinity rules inside pod.spec.affinity and it can have expressions
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution: (node affinity type)
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: key
+            operator: In,NotIn,Exists,DoesNotExist,Gt,Lt
+            values:
+            - value1

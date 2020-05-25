@@ -9,4 +9,5 @@
 - kubectl expose pod redis --port=6379 --name redis-service (This will automatically use the pod's labels as selectors)
   kubectl create service clusterip redis --tcp=6379:6379 (his will not use the pods labels as selectors,
   instead it will assume selectors as app=redis)
--
+- we need to expose the pod in dockerfile to make it available
+- for the ssh nodes we need to mention the username for the authentication purpose (dns)

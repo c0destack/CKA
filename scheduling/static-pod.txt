@@ -1,0 +1,12 @@
+- if there is no master node at all then how kubelet will manage the things.
+  we maintain the manifest inside /etc/kubernetes/manifests directory and kubelet also lookup for them
+  so we can place pod manifest there and kubelet can take care about the pod after ward
+- if the file removed from this directly then it will also delete the pod
+- we can also create the pods this way, known as static pods
+- we have mentioned this directory path inside kubelet itself while creating it (kubelet.service)
+  Or we can add a configfile inside .service file and add the staticPodPath in the config file
+- we can check the static pod by docker ps command only not by kubectl commands (kubeapi missing)
+- kubeapi server aware about static pods too, we can access them by kubectl commands too
+  but can't edit or delete them only view them. it can be deleted from the directory itself
+- we can use static pod to deploy the control plane pods itself.
+- static pods as well as daemonsets both are ignored by the scheduler. 

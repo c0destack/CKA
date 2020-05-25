@@ -1,0 +1,6 @@
+- it create the copy of pod in all nodes. it make sure to maintain the same if node added/removed also
+- monitoring solution and logs viewer can be usecases of daemonsets
+- kubeproxy is also a ds.
+- it was using spec.nodeName to make sure the replica on each node previously but after ward 
+  it is using the node affinity rules
+  
