@@ -1,0 +1,20 @@
+- we can directl access the kubeapi server via curl https://server:port/api/v1/pods --key admin.key
+  --cert admin.crt --cacert ca.crt
+or we can directl access by kubectl command by
+- kubectl get pods --server server:port --client-key admin.ky --client-certificate admin.crt
+  --certificate-authority ca.crt
+or we can put these things inside kubeconfig file directly
+- kubeconfig file contains 3 major components
+  1. clusters - which contains the cluster details, ca certificate, and server details
+     cluster:
+       certificate-authority: ca.crt
+       server: server:port
+    we can also add the data directly in certificate-authority-data (base64)
+  2. users: it contains the user informations,client-key,client-certificate
+     user:
+       client-certificate: admin.crt
+       client-key: admin.key
+  3. context: it map the users and the clusters,
+     context:
+       cluster:
+       user: 

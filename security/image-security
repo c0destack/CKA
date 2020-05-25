@@ -1,0 +1,16 @@
+- the image path is <registry,docker.io default one>/<user-account>/<image-repo> 
+- to access the private image, we have to create a secret docker-regsitry with --docker-server=
+  --docker-username, --docker-password, --docker-email
+  kubectl create secret docker-registry --options
+- we can provide the secret details inside .containers.imagePullSecrets
+
+
+<security-context>
+- we can add the security context at the pod/container level
+  securityContexts:
+    runAsUser: 1000
+- inside a container we can add capabilities as well
+  securityContext:
+      capabilities:
+        add: ["NET_ADMIN", "SYS_TIME"]
+    

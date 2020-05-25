@@ -1,0 +1,38 @@
+- the symmetric encryption is not secure for data transfer as the public key can be hacked by the
+  man in middle
+- we use asymmetric algo like rsa to encrypt the data & setup communication b/w clients and servers
+- we can incrypt the data by any of public/private and decrypt the data by other
+- we can generate the keys by ssh-keygen command(private & public keys)
+  and lock the server by public key can be view at(cat .ssh/authrosed_keys) and send the request via 
+  ssh -i private_key user1@server1 [in case of ssh]
+- In case of client-server(web), we used `openssl genrsa -out mykey.key 1024`
+  and `openssl rsa -in mykey.key -pubout > mypublic.pem` to generate the public & private keys
+- The server generates the private & public keys and send the private keys and then client uses that
+  public key to encrypt the symmetric key and send to server and server decrypt the symmetric key by private key
+  and use that symmetric key for further transfer
+- the hacker can also create a fake server and ask for the symmetric key and then use the symmetric
+  key to get the data
+
+<certificates> 
+- it is used to check the authorisation and check the valid server or not. we have a sign on the 
+  certificate which is created via CA(certificate authority, they also uses the encryption also)
+- our browser have the public keys to those CA, so can validate the data
+
+
+- server sends a certificate signing request(public key)to the CA, CA uses their private key to sign the CSR 
+  when server send a request to client, the client validate the certificates, it already have the public key
+  of CA, with him so it can verify the server
+
+---------------------------------------------------------------------------------------------
+<TLS>
+
+- server certificates: certificate(public key) & private key
+- root certificates: private & public key of CA
+- client certificates: private & public key of client
+- public certificates have .crt & .pem and private keys have .key or *key.pem
+
+- server certificates in kubernetes
+  kubeapi server,etcd server,kubelet server
+- client certificates in kubernetes
+  admin client,scheduler client,control manager client, kube proxy client
+  and kubeapi server can be client to the kubelet & etcd as well

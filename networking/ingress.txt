@@ -1,0 +1,20 @@
+- we use use proxy server b/w cluster and dns to listen on 80 or custom port instead of a nodeport
+- we will create a service of type loadbalancer then it ask the gcp to create a loadbalancer
+  which automatically expose a external ip to tthe user, no need for proxy-server in that case
+- for every new service we have to create a new load balancer also to distribute the traffic
+
+- ingress controller (nginx)
+  it have one deployment(which uses the ingress conroller's image), 
+  one noreport svc,one configmap, one serviceaccount
+
+- ingress resources
+  apiversion: extensions/v1beta1
+  kind: Ingress
+- if we have a single option we can add servive name/port directly inside spec.backend
+  but for more options we have to mention all inside 
+  spec.rules.(-http).paths
+  which contains path and backend details
+- we can also add host field inside spec.rules.(-http,host).paths, which can change the host name as well
+  for subdomains
+-
+

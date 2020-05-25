@@ -1,0 +1,45 @@
+- If we want to access a host-b from host-a, we can access by its ip address but if we want to access
+  it via a name instead of an ip, we can make an entry which will map the name w/ ip in the
+  /etc/hosts file in source host. This name can be anything not neccessary the name of hots-b actually
+- if the entries become large it would be difficult to manage then dns server comes into play
+- host can be mapped to dns server by echo `nameserver  $dn-server-ip` >> etc/resolv.conf
+- 8.8.8.8 nameserver is launched by google which know all the entries available at google search
+  we can add this nameserver also in /etc/resolv.conf file or make an entry in dns server as well
+  Forward All to 8.8.8.8 (which will forward all the known request to 8.8.8.8)
+- www.google.com
+  . -> root
+  .com -> top level domain 
+  google --> organisation
+  www -> sub domains
+- when we access the www.google.com, first it will check the organisation dns which will transfer request to
+  root dns(.) -> .com dns ->    google dns -> www.google.com
+- we can add a entry with search in /etc/resolv.conf which. will append that value with the dns name
+  if search is shubham.com and we are search for chaudhary then it will look for chaudhary.shubham.com
+- record type can be A(ip4 & name), AAAA(ip6 and name), Ctype(name w/ aliases)
+- nslookup & dig are used to look for dns server but they only find the dns server not in local /etc/hosts
+
+<coredns>
+- after installing coredns binaries and ran it as pod we can add the ip to host mapping via providing the 
+  entries inside the /etc/hosts file in the dns server and add the name of thsi file inside the file
+  Corefile
+  {
+      hosts /etc/hosts
+  }
+  bydefault coredns looking for entries in this file to get the path to fetch the map
+
+<dns in kubernetes>
+- the dns server is running in the kubernetes cluster which contains the svc and pod details
+- the svc details are added by default
+- to access a svc inside same namespace we can directly use http://<svc-name>
+- to access a svc inside different namespace we have to use a fully qualified name 
+  http://<svc-name>.namespace.svc.cluster.local
+- for the pod we can made an entry by ourself and can access by
+   http://<svc-name>.namespace.pod.cluster.local, here pod name is same as pod-ip except the . replaced by -
+
+
+<coredns>
+- we add the nameserver & serach details inside /etc/resolv.conf file inside each pod
+- coredns is deployed a deployment in kubernetes.
+- kubelet config file contains the ip of coredns service and clusterdomain
+- we can access the svc by name directly because we have a serach entry in .conf file for svc but
+  not for pods

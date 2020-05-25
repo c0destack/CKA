@@ -1,0 +1,5 @@
+- the service scope is accross the cluster not a single node
+- kube-proxy is responsible for making the service(virtual entity) available to all nodes
+- service doesn't have process,interface inside it 
+- service uses ip-tables to forward the tarffic comming to service to the pod
+- we can check the rules by iptables -L -t net command 

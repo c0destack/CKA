@@ -1,0 +1,40 @@
+- kubectl create configmap <name> --from-literal=<key>=<value> repeat --from-literal mulitple times
+  for more vars
+- we add the key-value pairs inside data section in configmaps
+- to get env from configmap, we use envfrom variable
+  envFrom:
+    - configMapRef:
+        name: <map-name>
+- env:
+   - name: 
+     valueFrom:
+       configMapKeyRef:
+         name: <map-name>
+         key: <key>
+- we add configmap as a volume, 
+  volumes:
+  - name: 
+    configMap:
+      name: 
+
+-------------------------------------------------------------------------------
+- kubectl create secret generic --from-literal=<key>=<value> repeat --from-literal mulitple times
+  for more vars
+- we need to provide the encoded values in .data section in secrets
+  so we can use echo -n 'value' | base64 command to encrypt the text
+- for decode the values we use echo -n 'value' | base64 --decode
+- to get env from secret, we use envfrom variable
+  envFrom:
+    - secretRef:
+        name: <secret-name>
+- env:
+   - name: 
+     valueFrom:
+       secretKeyRef:
+         name: <secret-name>
+         key: <key>
+- we add secret as a volume, 
+  volumes:
+  - name: 
+    secret:
+      secretName: 

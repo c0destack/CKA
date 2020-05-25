@@ -2,5 +2,6 @@
 - we can use the same manifest as of the default scheduler, change the name 
   leader-elect: if multiple copy of a scheduler is running on diff master node then one can be 
                 active at a time so leader-elect option help out there
-- lock-object-name: <name> : it is to differentiate b/w default and custom scheduler
+- lock-object-name: <name> : it is to differentiate b/w default and custom scheduler. it will lock that scheduler
+- scheduler-name: mention the name of custom scheduler here
 - we can add scheduler-name in pod manifest inside spec.schedulerName section

@@ -1,0 +1,12 @@
+- the containers are connected by the bridge inside the same nodes and for the other nodes
+  we are maintaining the i/p tables.
+
+<cni>
+- we have cni options inside the kubelet.service or can be view by ps -aux | grep kubelet command
+  --network-plugin=cni
+  --cni-bin-dir=/opt/cni/bin , it contains all the plugins details
+  --cni-conf-dir=/etc/cni/net.d, it have configuration file i.e bridge
+
+- isGateway define is bridge alos get an ip or not
+- ipMasq - ip net rule will be added or not for request forwarding
+- ipam - 

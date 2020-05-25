@@ -1,0 +1,13 @@
+- ip link: this command is use to check the interface (eth) of the host
+- connect with switch which will help to communicate within same network
+  ip addr add host-ip dev eth0, after that they can communicate
+- we need routing to connect the hosts of two different networks
+  the router have two ips, from each network
+- ip route add another-network-ip via router-ip
+  which will add an entry in the ip route table 
+- we need a gateway which will decide the destination possible, which is equals to 0.0.0.0
+  means we can access any network through that router
+- 0.0.0.0 gateway value means we don't need a gateway to access that. i.e within same network
+- by default we can't forward packet from one interface to another for this for security reasons
+ we need to change the value of /proc/sys/net/ip4v/ip_forward to 1(allow) and 0 (not allow)
+- 

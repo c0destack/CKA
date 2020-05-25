@@ -1,0 +1,3 @@
+- container storage interface allow the container orchestration tool(kubernetes) to manage the storage
+- it can create/delete the volume
+- it can attach the volume to a node etc

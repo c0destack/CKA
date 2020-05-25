@@ -1,0 +1,6 @@
+- all the etcd nodes have same data, so for the write operations one of the etcd will become the
+  leader and other become followers. the leader is write the data & send the copy to the other etcd as well
+- the min number of nodes that should be up for the healthy write is called quorum which is n/2+1
+- we prefer the odd no of nodes over even nodes because in case of segmentation the even doesn't follow the
+  quoram in any of the part but odd have
+- 

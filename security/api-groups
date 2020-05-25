@@ -1,0 +1,10 @@
+- we can access the kubeapi directly by kubectl proxy --port=8080 & curl http://localhost:8080/api/ commands
+  curl http://localhost:8080/api/namespaces/default/pods
+- or if we don't want to use kube proxy we can directly access it by
+  APISERVER=$(kubectl config view --minify -o jsonpath='{.clusters[0].cluster.server}')
+  TOKEN=$(kubectl get secret $(kubectl get serviceaccount default -o jsonpath='{.secrets[0].name}') -o jsonpath='{.data.token}' | base64 --decode )
+  curl $APISERVER/api --header "Authorization: Bearer $TOKEN" --insecure
+
+<RBAC>
+- we can check the access by kubectl auth can-i create deployments --as role-name
+- 

@@ -1,0 +1,16 @@
+- user (admin,developers) can authenticate by password,token,certificates or external authentications
+- bot/machine can authenticate directly by creating a service account
+- <password-file>
+  create a csv file with password,username,userid,group and add the path into the kubeapi server or pod 
+  --basic-auth-file="path" and mount it in case of kubeadm
+- we can access kubeapi via curl -v -k https://node-ip:port/api/v1/pods -u "username:password"
+- similar for token file as well (token,username,userid,group)
+  --token-auth-file="path"
+- we are using role and rolebinding to mention the permission(authorization) and 
+  username,password for authentications
+  
+
+- user to kubeapi [level-1] which is done by sa,password,token
+- kubeapi to other control plane components [level-2] which is done by tls
+- b/w the applications [level-3] which is done by network policies
+- applications to end users is done by the applications itself

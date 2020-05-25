@@ -1,0 +1,4 @@
+- it is same as normal container but comes under spec.initContainers section
+- it run before the actual container run and process in the initContainer must run to a completion before the real 
+  container hosting the application starts. 
+- we can also have multiple init containers.

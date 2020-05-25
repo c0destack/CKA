@@ -1,0 +1,13 @@
+- all the n/w related tasks -- creation of ns,veth,giveip and all can be come under cni plugins 
+  to make it simple
+- we add invoke bridge via bridge add <cid> <namespace>
+
+- docker don't have cni plugin directly so the kubernetes create a docker container via
+  none network mode and ru bridge command after that to add cni plugins(setup network).
+
+<cni-weave>
+- weave is deployed as daemonsets in the cluster each replica of the weave is communicate with each other
+  and help the pods to share the packet among large cluster because in standard way we have to add multiple
+  queries inside route table and difficult to manage
+
+- 

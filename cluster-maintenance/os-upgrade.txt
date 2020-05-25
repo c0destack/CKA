@@ -1,0 +1,6 @@
+- node drain: terminate the pods and scheduled them on the other nodes. and marked that node
+              as cordon(unschedulable)
+- cordon: it just marked the node as unschedulable not terminate the pods
+- uncordon: it is reverse of cordon, marked the node as schedulable again
+- we need to use --ignore-daemonsets flag if ds in running on the node
+- we need a --force flag is a pod is running on that node

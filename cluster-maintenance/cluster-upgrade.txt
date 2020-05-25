@@ -1,0 +1,25 @@
+- kubectl version can be x or x+1
+- kubeapi: x, control-manager: x,x-1 , scheduler: x or x-1
+- kubelet or kube-proxy x,x-1,x-2
+
+- upgrade master node will not affect the pods running on the worker nodes but the management
+  functionality won't work.
+- we can upgrade the worker nodes one by one. first drain the node then upgrade it
+- kubeadm upgrade plan, command to get upgrade info
+<upgarding>
+- first upgrade the kubeadm itself
+  apt-get upgrade -y kubeadm=version
+- upgrade the cluster or master node by
+  kubeadm upgrade apply version
+- to upgrade kubelet of master node
+  apt-get upgrade -y kubelet=version
+-  after this just restart the kubelet service by
+   systemctl restart kubelet
+
+then upgrade the worker nodes
+- first drain the node
+- upgrade the kubeadm
+- upgrade the kubelet
+- upgrade the node configuration for new version by
+  kubeadm upgrade node [config --kubelet-version version]
+- restart the kubelet

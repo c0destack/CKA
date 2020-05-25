@@ -1,0 +1,17 @@
+docker stores the files inside /var/lib/docker folder
+- aufs
+- containers
+- image
+- volumes
+
+- docker following the layered architecture where each line is one layer. The benefit is if 
+  we are having the same layer in other image(build already) we can map it with that so 
+  no need to build again.
+- docker volume create vname will create the volume
+  and we can mount this volume by docker run -v vname:path_to_mount image, it will create the volume
+  if not present and we can also provide the custom volume path by absolute path
+-  we can also use an alternate method:
+   docker run --mount type=bind,source=dummy,target=dummy image
+- docker uses storage drivers to manage this i.e, aufs,zfs,overlay
+- volume drivers are help to create the volumes ex: local(default), netapp,convoy
+  we can choose the volume driver in docker run command via --volume-driver option

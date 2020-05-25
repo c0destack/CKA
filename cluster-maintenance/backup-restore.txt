@@ -1,0 +1,8 @@
+- we can take backup of the resources by 
+  1. store the configuration files in github and use later
+  2. get details from kubeapi, kubectl get all --all-namespaces -oyaml > backup.yaml
+ 
+ <etcd backup and reload>
+ - ETCDCTL_API should be set to 3, export ETCDCTL_API=3
+ - ETCDCTL_API=3 etcdctl snapshot save , to save the snapshot
+ - ETCDCTL_API=3 etcdctl snapshot restore -h, to restore

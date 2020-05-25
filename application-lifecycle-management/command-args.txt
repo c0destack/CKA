@@ -1,0 +1,4 @@
+- ENTRYPOINT in docker file can be the initial command which can be the prefix to cmd command
+  or commandline arguemnt
+- CMD command mention the args of ENTRYPOINT
+- the command override ENTRYPOINT and args override CMD

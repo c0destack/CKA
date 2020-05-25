@@ -1,0 +1,24 @@
+- the container create a seperate namespace(n/w namespace) which have its own ip/route tables whose
+  entries can be different from the entries in th host.
+<create network namespace>
+- ip netns add <name>
+- ip netns command list all the network namespaces
+<exec inside the namespace>
+- ip netns exec <name>  or use -n <name> suffix in the end of command
+
+- we create a virtual ethernet and connect the two namespace with each other
+- ip link add eth1 type veth peer name eth2, it will create a virual ethernet pair
+- ip link set eth1 netns <namespace>, it will add the eth to the ns and same for other end too
+- ip -n <ns1> addr add <ip> dev eth1, it will assign an ip to the namespace
+- ip -n <ns1> link set eth1 up, it will up the connectivity
+now we can ping the two namespaces, the entry inside arp table is also added
+but the host don''t about these virtual ethernets & connectivity (no entry in arp table)
+- if we want to establish a communication b/w multiple namespace we have to create a virtual switch
+
+- ip link add eth3 type bridge, it will create a bridge which is eth for host but switch for namespaces
+- ip link set dev eth3 up
+- we use the same command to create the eth pairs and then set it with the namespaces
+- it will add the ip-addresses after this and up the virtual ethernets
+
+- if we want to access these namespaces from the host, we have to assign an ip to the hsot then
+  we can access them

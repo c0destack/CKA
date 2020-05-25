@@ -1,0 +1,24 @@
+- generates certificates
+1. generates keys
+   openssl genrsa -out ca.key 2048
+2. certificates signing request
+   openssl req -new -key ca.key -subj "/CN=KUBERNETES-CA" -out ca.csr
+3. signing certificates
+   openssl x509 -req -in ca.csr -signkey ca.key -out ca.crt
+   for other: openssl x509 -req -in <csr> -CA ca.crt -CAkey ca.key -out name.crt
+- we can differntiate b/w the different users by group
+   openssl req -new -key admin.key -subj "/CN=kube-admin/O=system:masters" -out admin.csr
+- we can access components via curl commands with certificates instead of username & password
+  --key --cert --cacert, we can also move these things in kubeconfig file
+- we can also provide multiple names in certificates ie, kubernetes,kubernetes.default
+  kubernetes.default.svc for kubeapi server.. which can be pass in step two by pasing a config file
+  --config openssl.cnf (this file contains all the names)
+- for kubelet certificates names are like.. system:node:node-name
+  they are present inside the system:nodes group
+
+<view certificates>
+- api-server certificates: openssl x509 -in /etc/kubernetes/pki/apiserver.crt -text -noout
+
+- view certificates of etcd 
+  journalctl -u etcd.service -1 or kubectl logs etcd-master
+  or docker ps -a and then docker logs container-id(if kubectl unreachable)

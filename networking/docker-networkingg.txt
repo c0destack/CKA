@@ -1,0 +1,12 @@
+- we can choose the networking option in docker run command by --network command
+- none option is used to make it isolate, we can't access it from others
+- host option allow to access the container in the host itself, http://hostip:port
+- the best appproach is used the bridge option every container(network ns) is connected w/ it
+
+- to allow the external users to use the container we can expose other port in run command
+  docker run -p 8080:80 nginx and we can access that container via https/node-ip:8080 link
+- this request forwarrd from one port to another is done by the iptables nat masquerade command
+  iptables -t nat -A DOCKER -j DNAT --dport 8080 --to-destination container-ip:80
+  we can check these rules via iptables -nvL -t nat command
+- netstat -nplt, command is use to check the port & details of control plane components
+- etcd port 2379 for control plane components and 2380 for p2p

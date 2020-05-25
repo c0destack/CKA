@@ -1,0 +1,7 @@
+- we have a certificate api, which will allow the admin to sign the certificates
+- the user create the csr(base 64) and create a CSR object and paste the data under
+  spec.request section.
+- admin get access the csr by `kubectk get csr` and approve by kubectl certificate approve jane
+- the controller manager helps us to do all these things. It have csr approving & csr signing
+  managers. it have --cluster-signing-key/cert-file flags in the definition.
+-  

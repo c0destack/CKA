@@ -1,0 +1,14 @@
+- etcdctl endpoint health
+- ps -aux | grep kube-apiserver or any control plane component
+- static pod path -> kubelet.service 1. --pod-manifest-path or --config -> staticPodPath
+- netstat -natulp | grep port to check the busyness of port
+- journalctl -u etcd to get logs
+- ip link - check the interface
+- ip addr to check the ip addresses assigned
+- ip route - view the routing table
+- dns /etc/hosts or /etc/resolv.conf
+- arp is useed  to get the mac addresses of nodes
+- netstat -plnt
+- cni plugin can be found from ps -aux | grep kubelet
+- kubeproxy log /var/log/kube-proxy.log 
+- 

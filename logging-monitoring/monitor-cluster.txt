@@ -1,0 +1,4 @@
+- we use metrix server for monitor the k8s cluster. it uses in-memory architechture
+  stores the data in memory not in disk so unable to retrive the historical data
+- we can setup this by cloning the github repo & apply the deploy/1.8+ folder
+  Or in minikube we can use minikube addons enable metrics-server

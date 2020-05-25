@@ -1,0 +1,7 @@
+- we have created the kube-apiserver on the multiple master nodes. All can be available in the active
+  state. and the request can be mmanaged by the external load balancer. which can also configured by
+  the an extra node.
+- the controller manager & scheduler can't be run parallely there will be a chance of a redundancy
+  so we ran them active/standby mode one at a time and this status can be managed by the kube-controller-manager-endpoint
+  which wait for the response from each controller and faster win the race and other remains in standy mode
+- the etcd can be configured in the ran in multiple external node. which is following the distributed architecture

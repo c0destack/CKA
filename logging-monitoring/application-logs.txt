@@ -1,0 +1,6 @@
+- the rolling update is the default update policy in deployments when we re-apply the manifest
+- we can set the image directly via kubectl set image deployment/name container-name=image
+- kubectl rollout status, command is used to check the rollout status
+- kubectl rollout history, to check the history of rollout
+- kubectl rollout undo, command to undo the rolling update
+- it create a new replicaset while updating and delete the older one

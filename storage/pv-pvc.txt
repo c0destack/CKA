@@ -1,0 +1,25 @@
+- we are using volumes to retain data even after the deletion container/pod
+  we can add the volume inside pod
+  spec.volumes:
+     - name: vol-1
+       hostPath:
+         path: 
+         type:
+- we can also mount the same volume inside the container as well using volumeMounts:
+ volumeMounts:
+ - mountPath:
+   name: 
+
+<persistent volume>
+- In the previous method we have to create a separate volume for each of the pod and need to modify
+ all if any modification is needed
+ so this can be solved by persistent volume(which is a pool of storage inside the cluster)
+ and each pvc can consume it whenever it wants it.
+ we have a resource persistentvolume in k8s inside v1-api
+
+<persistent-volume-claim>
+- the user can create the pvc on the basis of his need and k8s will mount rach pvc with the best
+  matches pv. it is one to one mapping between pv & pvc. 
+  we can also filter the pv by using label and selector inside both
+- we can choose retain,delete,recycle option inside persistentVolumeReclaimPolicy, which will decide
+  the behavoir of pv after the deletion of pvc
